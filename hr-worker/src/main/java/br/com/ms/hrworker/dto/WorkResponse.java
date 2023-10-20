@@ -16,7 +16,6 @@ import java.util.UUID;
 public class WorkResponse {
     private UUID id;
     private String name;
-    @JsonProperty(value = "daily_income")
     private Double dailyIncome;
 
     public WorkResponse(Worker worker) {

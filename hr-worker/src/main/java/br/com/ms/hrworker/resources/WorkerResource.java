@@ -6,6 +6,7 @@ import br.com.ms.hrworker.seriveces.WorkerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +22,11 @@ import java.util.UUID;
 public class WorkerResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkerResource.class);
     private final WorkerService service;
+    private final Environment env;
 
-    public WorkerResource(WorkerService service) {
+    public WorkerResource(WorkerService service, Environment env) {
         this.service = service;
+        this.env = env;
     }
 
     @GetMapping
@@ -36,7 +39,8 @@ public class WorkerResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<WorkResponse> findById(@PathVariable UUID id) {
         WorkResponse response = this.service.findById(id);
-        LOGGER.info("Worker Found!");
+        LOGGER.info("Worker Found");
+        LOGGER.info("PORT = " + env.getProperty("local.server.port"));
         return ResponseEntity.ok(response);
     }
 
