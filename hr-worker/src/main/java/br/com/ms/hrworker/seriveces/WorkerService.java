@@ -24,7 +24,7 @@ public class WorkerService {
 
                 .collect(Collectors.toList());
     }
-    public WorkResponse findById(UUID id) {
+    public WorkResponse findById(Long id) {
         Worker response = this.repository.findById(id).get();
         return new WorkResponse(response);
     }

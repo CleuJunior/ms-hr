@@ -14,7 +14,7 @@ import java.util.UUID;
 public class Worker implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private UUID id;
+	private Long id;
 	private String name;
 	private Double dailyIncome;
 

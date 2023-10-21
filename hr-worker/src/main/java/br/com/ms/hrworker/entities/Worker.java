@@ -28,9 +28,8 @@ public class Worker implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
     private String name;
     @Column(name = "daily_income")
     private Double dailyIncome;

@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter @Setter
 public class WorkResponse {
-    private UUID id;
+    private Long id;
     private String name;
     private Double dailyIncome;
 
