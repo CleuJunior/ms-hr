@@ -5,6 +5,7 @@ import br.com.ms.hrworker.dto.WorkResponse;
 import br.com.ms.hrworker.seriveces.WorkerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 @RefreshScope
 @RestController
@@ -22,11 +22,20 @@ import java.util.UUID;
 public class WorkerResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkerResource.class);
     private final WorkerService service;
+
+    @Value("${test.config}")
+    private String testConfig;
     private final Environment env;
 
     public WorkerResource(WorkerService service, Environment env) {
         this.service = service;
         this.env = env;
+    }
+
+    @GetMapping(value = "/configs")
+    public ResponseEntity<Void> getConfigs() {
+        LOGGER.info("CONFIG = " + testConfig);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping
