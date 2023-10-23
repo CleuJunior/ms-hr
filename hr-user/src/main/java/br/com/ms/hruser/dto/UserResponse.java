@@ -18,7 +18,7 @@ public class UserResponse {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.password = getPassword();
+        this.password = user.getPassword();
         this.roles = user.getRoles();
     }
 }
