@@ -48,27 +48,28 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			.antMatchers(ADMIN).hasRole(ROLE_ADMIN)
 			.anyRequest().authenticated();
 
-//		http.cors().configurationSource(corsConfigurationSource());
+		http
+				.cors()
+				.configurationSource(corsConfigurationSource());
 	}
-//
-//	@Bean
-//	public CorsConfigurationSource corsConfigurationSource() {
-//		CorsConfiguration corsConfig = new CorsConfiguration();
-//		corsConfig.setAllowedOrigins(List.of("*"));
-//		corsConfig.setAllowedMethods(List.of("POST", "GET", "PUT", "DELETE", "PATCH"));
-//		corsConfig.setAllowCredentials(true);
-//		corsConfig.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-//
-//		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//		source.registerCorsConfiguration("/**", corsConfig);
-//		return source;
-//	}
-//
-//	@Bean
-//	public FilterRegistrationBean<CorsFilter> corsFilter() {
-//		FilterRegistrationBean<CorsFilter> bean
-//			= new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
-//		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-//		return bean;
-//	}
+
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration corsConfig = new CorsConfiguration();
+		corsConfig.setAllowedOrigins(List.of("*"));
+		corsConfig.setAllowedMethods(List.of("POST", "GET", "PUT", "DELETE", "PATCH"));
+		corsConfig.setAllowCredentials(true);
+		corsConfig.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", corsConfig);
+		return source;
+	}
+
+	@Bean
+	public FilterRegistrationBean<CorsFilter> corsFilter() {
+		var bean = new FilterRegistrationBean<>(new CorsFilter(this.corsConfigurationSource()));
+		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		return bean;
+	}
 }
