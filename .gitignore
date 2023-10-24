@@ -21,6 +21,8 @@
 /../../ms-hr\.idea/codestream.xml
 /codeStyles/
 
+create.sql
+
 
 # AWS User-specific
 .idea/**/aws.xml

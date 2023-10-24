@@ -22,20 +22,11 @@ import java.util.List;
 public class WorkerResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkerResource.class);
     private final WorkerService service;
-
-    @Value("${test.config}")
-    private String testConfig;
     private final Environment env;
 
     public WorkerResource(WorkerService service, Environment env) {
         this.service = service;
         this.env = env;
-    }
-
-    @GetMapping(value = "/configs")
-    public ResponseEntity<Void> getConfigs() {
-        LOGGER.info("CONFIG = {}", testConfig);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping
