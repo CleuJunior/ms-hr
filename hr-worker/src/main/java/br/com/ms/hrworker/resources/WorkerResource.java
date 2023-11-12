@@ -22,11 +22,9 @@ import java.util.List;
 public class WorkerResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkerResource.class);
     private final WorkerService service;
-    private final Environment env;
 
-    public WorkerResource(WorkerService service, Environment env) {
+    public WorkerResource(WorkerService service) {
         this.service = service;
-        this.env = env;
     }
 
     @GetMapping
@@ -40,7 +38,6 @@ public class WorkerResource {
     public ResponseEntity<WorkResponse> findById(@PathVariable Long id) {
         WorkResponse response = this.service.findById(id);
         LOGGER.info("Worker Found");
-        LOGGER.info("PORT = {}", env.getProperty("local.server.port"));
         return ResponseEntity.ok(response);
     }
 
