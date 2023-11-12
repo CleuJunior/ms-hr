@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a322cf0b-d23c-42d3-a0a3-5e806df5b9dc",
-		"name": "Hr Microservice",
+		"name": "hr-microservice",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9140518"
 	},
