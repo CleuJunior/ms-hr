@@ -169,7 +169,7 @@ Resposta de exemplo:
 
 #### Postman Setup
 
-[Postman collection](Hr Microservice.postman_collection.json)
+[Postman collection](hr-microservice.postman_collection.json)
 
 [Postman environment](hr-ms.postman_environment.json)
 
